@@ -5,12 +5,10 @@
         /*
             3-7 Write a program that is given an array of integers and determines the mode,
             which is the number that appears most frequently in the array.     
-        
-            Pause 13:34
          */
         public static void Run()
         {
-            var numbers = new int[] {1, 2, 3, 4, 4, 4, 5, 5, 6, 7, 8, 10, 12, 13, 13};
+            var numbers = new int[] { 1, 2, 3, 4, 4, 4, 5, 5, 6, 7, 8, 10, 12, 13, 13 };
             var mode = GetMode(numbers);
             Console.WriteLine(mode);
         }
@@ -49,6 +47,19 @@
                     maxNumber = number;
                     maxFrequency = frequency;
                 }
+            }
+            return maxNumber;
+        }
+
+        private static int GetMode2(int[] numbers)
+        {
+            var frequencyTable = GetFrequencyTable(numbers);
+            var maxNumber = numbers[0];
+            for (var number = 0; number < frequencyTable.Length; number++)
+            {
+                var frequency = frequencyTable[number];
+                var maxFrequency = frequencyTable[maxNumber];
+                if (frequency > maxFrequency) maxNumber = number;
             }
             return maxNumber;
         }
